@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/campus-varnamo/smarthut-client-grupp-3-luma-hotel-times-square/issues"
   },
-  "homepage": "https://github.com/campus-varnamo/smarthut-client-grupp-3-luma-hotel-times-square#readme"
+  "homepage": "https://github.com/campus-varnamo/smarthut-client-grupp-3-luma-hotel-times-square#readme",
+  "dependencies": {
+    "react": "^18.2.0"
+  }
 }
