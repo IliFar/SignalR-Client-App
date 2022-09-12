@@ -1,0 +1,19 @@
+{
+  "name": "smarthut-client-grupp-3-luma-hotel-times-square",
+  "version": "1.0.0",
+  "description": "smarthut-client-grupp-3-luma-hotel-times-square created by GitHub Classroom",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/campus-varnamo/smarthut-client-grupp-3-luma-hotel-times-square.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/campus-varnamo/smarthut-client-grupp-3-luma-hotel-times-square/issues"
+  },
+  "homepage": "https://github.com/campus-varnamo/smarthut-client-grupp-3-luma-hotel-times-square#readme"
+}
