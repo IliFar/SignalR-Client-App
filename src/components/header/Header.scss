@@ -1,0 +1,25 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    max-height: 70px;
+    padding: 10px;
+    align-items: center;
+    
+    .logo {
+        .logo-img {
+            width: 90px;
+        }
+    }
+    .user-avatar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .username {
+            margin-right: 10px;
+        }
+        .user-img {
+            height: 50px;
+        }
+    }
+    
+}
