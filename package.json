@@ -6,8 +6,8 @@
   "source": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "parcel public/index.html",
-    "build": "parcel build"
+    "start": "export PORT=5001 && parcel public/index.html --https",
+    "build": "parcel build" 
   },
   "repository": {
     "type": "git",
@@ -20,6 +20,8 @@
   },
   "homepage": "https://github.com/campus-varnamo/smarthut-client-grupp-3-luma-hotel-times-square#readme",
   "dependencies": {
+    "@azure/msal-browser": "^2.28.2",
+    "@azure/msal-react": "^1.4.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
