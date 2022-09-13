@@ -1,0 +1,11 @@
+.search {
+    min-height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .search-input {
+        min-width: 85%;
+        padding: 5px;
+        border-radius: 10px;
+    }
+}
