@@ -21,7 +21,8 @@
   "homepage": "https://github.com/campus-varnamo/smarthut-client-grupp-3-luma-hotel-times-square#readme",
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.4.0"
   },
   "devDependencies": {
     "parcel": "^2.7.0",
