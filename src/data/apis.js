@@ -1,7 +1,7 @@
 const axios = require('axios');
 
 async function getBuildingInfo(token){
-    return axios({
+    return await axios({
         method: 'get',
         url: 'https://api.smarthut.se/BuildingInfo/GetMyBuilding',
         headers: { Authorization: `Bearer ${token}` }
@@ -10,8 +10,8 @@ async function getBuildingInfo(token){
 }
 
 
-function getAllDevices(token, buildingId){
-    return axios({
+async function getAllDevices(token, buildingId){
+    return await axios({
         method: 'get',
         url: 'https://api.smarthut.se/DeviceInfo/GetBuildingDevices/'+ buildingId,
         headers: { Authorization: `Bearer ${token}` }

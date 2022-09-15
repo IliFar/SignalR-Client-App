@@ -22,7 +22,7 @@ const Header = (props) => {
           alt=""
           className="user-img"
         />
-        { props.isAuthenticated ? <span><SignOutButton /></span> : <SignInButton /> }
+        
       </div>
     </div>
   );
