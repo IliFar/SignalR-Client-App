@@ -1,12 +1,28 @@
 import React from 'react'
 
+const AlarmCount = (ApiCensor) => {
+
+  var count = 0;
+  var decount = 0;
+
+  ApiCensor.forEach(item => {
+    var minValue = item.minValue;
+    var maxValue = item.maxValue;
+
+    if (minValue >= 20 || 28 <= maxValue) {
+
+      count++;
+    }
+  });
+
+  return count;
+}
+
 //Config för vad som ska filtreras 
 const GetAlarmedCensors = (ApiCensor) => {
 
   var minValue = ApiCensor.minValue;
   var maxValue = ApiCensor.maxValue;
-
-
 
     if (minValue >= 16 || 28 <= maxValue) {
 
@@ -120,11 +136,13 @@ const Alarm = () => {
   return (
     
     <div className='alarm'>
+
+      {/* <p>{ApiCensor.devices[0].name}</p> */}
+      <p>{AlarmCount(ApiCensor.devices)} Alarms now</p>
       
       {ApiCensor.devices.slice(0, ApiCensor.devices.length).map((item, index) => {
 
         return GetAlarmedCensors(item);
-        
         
         return (
           <tr>
