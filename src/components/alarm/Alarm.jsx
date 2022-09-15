@@ -3,7 +3,6 @@ import React from 'react'
 const AlarmCount = (ApiCensor) => {
 
   var count = 0;
-  var decount = 0;
 
   ApiCensor.forEach(item => {
     var minValue = item.minValue;
@@ -24,31 +23,18 @@ const GetAlarmedCensors = (ApiCensor) => {
   var minValue = ApiCensor.minValue;
   var maxValue = ApiCensor.maxValue;
 
-    if (minValue >= 16 || 28 <= maxValue) {
+    if (minValue >= 45 || 45 <= maxValue) {
 
       return (
-        <tr>
-          {/* {ApiCensor[0]}
-          {ApiCensor[1]} */}
+        <div className='alarm'>
           <p>{ApiCensor.name}</p>
           <p>To Cold or warm</p>
           <button>Reset</button>
-        </tr>
+        </div>
       );
     }
-    
-    // if (HumidLowOK >= ApiCensor[2] || ApiCensor[2] >= HumidHighOK) {
-      
-    //   return (
-    //     <tr>
-    //       {ApiCensor[0]}
-    //       {ApiCensor[1]}
-    //       <p>To low or high humidity</p>
-    //       <button>Reset</button>
-    //     </tr>
-    //   );
-    // }
-    return ApiCensor;
+
+    return null;
 }
 
 //Skriver ut alarm och för tillfället skapar datan 
@@ -121,35 +107,19 @@ const Alarm = () => {
       "id": "33c144db-a99a-4067-aeea-0d28c03236d7",
       "name": "LUMA Hotel - Times Square"
     }
-    // ["Temperature Conference room 3", 35, 20 ],
-    // ["Humidity Conference room 3 2", 13, 53 ],
-    // ["Temperature swimming pool 5", 23, 45 ],
-    // ["Humidity Conference room 2", 22, 55 ],
-    // ["Temperature Conference room 1", 24, 51 ],
-    // ["Sensor 6", 25, 53 ],
-    // ["Sensor 7", 22, 55 ],
-    // ["Sensor 8", 16, 52 ]
-  
-
-
 
   return (
     
-    <div className='alarm'>
+    <div classId='alarmContainer'>
 
       {/* <p>{ApiCensor.devices[0].name}</p> */}
-      <p>{AlarmCount(ApiCensor.devices)} Alarms now</p>
+      <div id="AlarmCountText">
+        <p>{AlarmCount(ApiCensor.devices)} Alarms now</p>
+      </div>
       
       {ApiCensor.devices.slice(0, ApiCensor.devices.length).map((item, index) => {
 
-        return GetAlarmedCensors(item);
-        
-        return (
-          <tr>
-            {ApiCensor.name}
-          </tr>
-        );
-        
+        return GetAlarmedCensors(item);       
         
       })}
     </div>
@@ -157,28 +127,3 @@ const Alarm = () => {
 }
 
 export default Alarm
-
-
-      /* {test.map((items, index) => {
-            return <p> {items} </p>
-    })} */
-// {ApiCensor.map((items, index) => {
-//   return (
-//     <ol>
-//       {items.map((subItems, sIndex)=> {
-//         return <li> {subItems} </li>
-//       })}
-//     </ol>
-//   );
-// })}
-
-// {ApiCensor.slice(0, ApiCensor.length).map((item, index) => {
-//   return (
-//     <tr>
-//       {/* { getWrongAlarm(item[1], item[2]) } */}
-//       {/* {item[1]} */}
-//       {test}
-//     </tr>
-//   );
-// })}
-

@@ -4,7 +4,13 @@
     box-sizing: border-box;
 }
 
-.alarm tr{
+.alarm{
     width: 100%;
     display:flex;
+    background-color: red;
+    color: white;
+}
+
+#AlarmCountText{
+    font-size: 7vw;
 }
