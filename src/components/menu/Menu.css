@@ -15,7 +15,7 @@
 .menu i:active {
   background-color: palevioletred;
 }
-.menu i:ch .menu i:hover {
+.menu i:hover {
   background-color: palevioletred;
   border-radius: 50%;
 }/*# sourceMappingURL=Menu.css.map */
