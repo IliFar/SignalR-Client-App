@@ -1,7 +1,9 @@
 import React from "react";
 import "./Header.css";
+import { SignInButton } from "../SignInButton";
+import { SignOutButton } from "../SignOutButton";
 
-const Header = () => {
+const Header = (props) => {
   return (
     <div className="header">
       <div className="logo">
@@ -11,13 +13,15 @@ const Header = () => {
           className="logo-img"
         />
       </div>
+      
       <div className="user-avatar">
-        <h4 className="username">Hi, User</h4>
+        <h4 className="username">Hi, {props.name}</h4>
         <img
           src="https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745"
           alt=""
           className="user-img"
         />
+        
       </div>
     </div>
   );
