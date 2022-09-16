@@ -1,9 +1,10 @@
 import React from 'react'
+import GetBuilding from '../GetBuilding'
 
 const Alarm = () => {
   return (
     <div className='alarm'>
-        <div>Alarm</div>
+          <GetBuilding/>
     </div>
   )
 }

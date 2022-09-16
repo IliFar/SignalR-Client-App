@@ -14,34 +14,18 @@ import { loginRequest } from "../authentication/authConfig";
 import Signin from "./components/Signin.jsx/Signin";
 import { SignOutButton } from "./components/SignOutButton";
 import Header from "./components/header/Header";
+import GetBuilding from "./components/GetBuilding";
 
 const App = () => {
   const isAuthenticated = useIsAuthenticated();
-  const { instance, accounts, inProgress } = useMsal();
-  const name = isAuthenticated ? accounts[0].name : " ";
-  const request = {
-    ...loginRequest,
-    account: accounts[0],
-  };
-  const [accessToken, setAccessToken] = useState(null);
-  // Silently acquires an access token which is then attached to a request for Microsoft Graph data
-  // instance
-  //   .acquireTokenSilent(request)
-  //   .then((response) => {
-  //     setAccessToken(response.accessToken);
-  //   })
-  //   .catch((e) => {
-  //     instance.acquireTokenPopup(request).then((response) => {
-  //       setAccessToken(response.accessToken);
-  //     });
-  //   });
+  const { accounts} = useMsal();
   return (
     // <PageLayout />
     <>
       {!isAuthenticated ? (
         <Signin />
       ) : (
-        <>
+        <> 
           <Header name={accounts[0].name} />
           <Search />
           <Alarm />
