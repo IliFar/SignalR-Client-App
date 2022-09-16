@@ -42,11 +42,10 @@ const App = () => {
         <Signin />
       ) : (
         <>
-          <Header name={accounts[0].name}/>
+          <Header name={accounts[0].name} />
           <Search />
           <Alarm />
-          <Menu isAuthenticated = {isAuthenticated}/>
-          <SignOutButton/>
+          <Menu />
         </>
       )}
     </>
