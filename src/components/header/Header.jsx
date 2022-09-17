@@ -1,5 +1,4 @@
 import React from "react";
-//import User from "../user/User";
 import "./Header.css";
 import { SignInButton } from "../SignInButton";
 import { SignOutButton } from "../SignOutButton";
@@ -22,7 +21,7 @@ const Header = (props) => {
           alt=""
           className="user-img"
         />
-        { props.isAuthenticated ? <span><SignOutButton /></span> : <SignInButton /> }
+        
       </div>
     </div>
   );

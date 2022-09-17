@@ -1,20 +1,15 @@
 import React from "react";
 import { useMsal } from "@azure/msal-react";
+import icons from "./icons/Icons";
 
 function handleLogout(instance) {
-    instance.logoutPopup().catch(e => {
-        console.error(e);
-    });
+  instance.logoutPopup().catch((e) => {
+    console.error(e);
+  });
 }
 
 export const SignOutButton = () => {
-    const { instance } = useMsal();
+  const { instance } = useMsal();
 
-    return (
-        <div 
-            className="button" 
-            onClick={() => handleLogout(instance)}>
-                Sign out
-        </div>
-    );
-}
+  return <i onClick={() => handleLogout(instance)}>{icons.logout}</i>;
+};

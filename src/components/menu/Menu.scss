@@ -1,7 +1,22 @@
 .menu {
-    background-color: aquamarine;
     position: fixed;
     bottom: 0;
-    min-height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
     width: 100%;
+    padding: 5;
+    background: rgb(34,121,195);
+    background: linear-gradient(0deg, rgb(116, 170, 217) 18%, rgba(255,255,255,1) 75%);
+    
+    i {
+        font-size: 40;
+        &:active {
+            background-color: palevioletred;
+        }
+        &:hover {
+            background-color: palevioletred;
+            border-radius: 50%;
+        }
+    }
 }
