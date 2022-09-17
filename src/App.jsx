@@ -7,7 +7,6 @@ const App = () => {
   return (
     <PageLayout />
   );
-
 }
 
 export default App;

@@ -18,8 +18,16 @@ function getAllDevices(token, buildingId){
     })
 }
 
+function getHandShaking(userId){
+    return axios({
+        method: 'get',
+        url: 'https://smarthut.azurewebsites.net/api/negotiate',
+        headers: `X-MS-SIGNALR${userId}`
+    })
+}
 
 
 
-export {getBuildingInfo, getAllDevices };
+
+export {getBuildingInfo, getAllDevices, getHandShaking };
 
