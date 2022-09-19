@@ -1,35 +1,32 @@
 import React, { useState } from "react";
-import { PageLayout } from "./components/PageLayout";
 import "./App.css";
 import Search from "./components/search/Search";
 import Alarm from "./components/alarm/Alarm";
 import Menu from "./components/menu/Menu";
-import {
-  useIsAuthenticated,
-  useMsal,
-  AuthenticatedTemplate,
-  UnauthenticatedTemplate,
-} from "@azure/msal-react";
-import { loginRequest } from "../authentication/authConfig";
+import { useIsAuthenticated, useMsal } from "@azure/msal-react";
 import Signin from "./components/Signin.jsx/Signin";
-import { SignOutButton } from "./components/SignOutButton";
 import Header from "./components/header/Header";
-import GetBuilding from "./components/GetBuilding";
+import BuildingAndDevices from "./components/BuildingAndDevices";
+import { BuildingAndDevicesContext } from "../context/BuidlingAndDevicesContext";
 
 const App = () => {
   const isAuthenticated = useIsAuthenticated();
-  const { accounts} = useMsal();
+  const { accounts } = useMsal();
+  const { bldInfo, devices } = BuildingAndDevices();
+
   return (
     // <PageLayout />
     <>
       {!isAuthenticated ? (
         <Signin />
       ) : (
-        <> 
-          <Header name={accounts[0].name} />
-          <Search />
-          <Alarm />
-          <Menu />
+        <>
+          <BuildingAndDevicesContext.Provider value={{ bldInfo, devices }}>
+            <Header name={accounts[0].name} />
+            <Search />
+            <Alarm />
+            <Menu />
+          </BuildingAndDevicesContext.Provider>
         </>
       )}
     </>
