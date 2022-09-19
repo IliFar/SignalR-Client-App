@@ -1,12 +1,26 @@
-import React from 'react'
-import GetBuilding from '../GetBuilding'
+import React, { useContext, useEffect, useState } from "react";
+import { BuildingAndDevicesContext } from "../../../context/BuidlingAndDevicesContext";
+
+import connectSignalR from "../../../api_calls/Connect";
+import Connection from "../sensors/Connection";
+
 
 const Alarm = () => {
-  return (
-    <div className='alarm'>
-          <GetBuilding/>
-    </div>
-  )
-}
+  const { bldInfo, devices } = useContext(BuildingAndDevicesContext);
+  const [sensorData, setSensorData] = useState({});
+  const { url, token } = Connection();
 
-export default Alarm
+
+  useEffect(() => {
+    connectSignalR(setSensorData, url, token);
+  }, [url, token])
+
+  return (
+    <div className="alarm">
+      Alarm
+      <p></p>
+    </div>
+  );
+};
+
+export default Alarm;
