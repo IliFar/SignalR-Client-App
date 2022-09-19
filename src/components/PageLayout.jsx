@@ -11,7 +11,7 @@ import Menu from "./menu/Menu";
 import Search from "./search/Search";
 import "../App.css";
 import { loginRequest } from "../../authentication/authConfig";
-import { getBuildingInfo, getAllDevices } from "../data/apis";
+import { getBuildingInfo, getAllDevices } from "../../api_calls/BuildingAndDevice";
 import * as signalR from "@microsoft/signalr";
 
 export function PageLayout(props) {
