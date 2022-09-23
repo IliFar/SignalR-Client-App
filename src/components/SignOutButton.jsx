@@ -1,15 +1,12 @@
 import React from "react";
 import { useMsal } from "@azure/msal-react";
 import icons from "./icons/Icons";
+import { AppContext } from "./Data";
 
-function handleLogout(instance) {
-  instance.logoutPopup().catch((e) => {
-    console.error(e);
-  });
-}
+
 
 export const SignOutButton = () => {
-  const { instance } = useMsal();
+  const {handleLogout} = React.useContext(AppContext)
 
-  return <i onClick={() => handleLogout(instance)}>{icons.logout}</i>;
+  return <i onClick={() => handleLogout()}>{icons.logout}</i>;
 };

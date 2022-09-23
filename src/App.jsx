@@ -1,40 +1,17 @@
 import React, { useState } from "react";
-import { PageLayout } from "./components/PageLayout";
 import "./App.css";
 import Search from "./components/search/Search";
 import Alarm from "./components/alarm/Alarm";
 import Menu from "./components/menu/Menu";
-import {
-  useIsAuthenticated,
-  useMsal,
-  AuthenticatedTemplate,
-  UnauthenticatedTemplate,
-} from "@azure/msal-react";
-import { loginRequest } from "../authentication/authConfig";
+import { useIsAuthenticated, useMsal } from "@azure/msal-react";
 import Signin from "./components/Signin.jsx/Signin";
-import { SignOutButton } from "./components/SignOutButton";
 import Header from "./components/header/Header";
+import { AppContext } from "./components/Data";
+import { Outlet } from "react-router-dom";
 
 const App = () => {
   const isAuthenticated = useIsAuthenticated();
-  const { instance, accounts, inProgress } = useMsal();
-  const name = isAuthenticated ? accounts[0].name : " ";
-  const request = {
-    ...loginRequest,
-    account: accounts[0],
-  };
-  const [accessToken, setAccessToken] = useState(null);
-  // Silently acquires an access token which is then attached to a request for Microsoft Graph data
-  // instance
-  //   .acquireTokenSilent(request)
-  //   .then((response) => {
-  //     setAccessToken(response.accessToken);
-  //   })
-  //   .catch((e) => {
-  //     instance.acquireTokenPopup(request).then((response) => {
-  //       setAccessToken(response.accessToken);
-  //     });
-  //   });
+  const { accounts } = useMsal();
   return (
     // <PageLayout />
     <>
@@ -42,7 +19,7 @@ const App = () => {
         <Signin />
       ) : (
         <>
-          <Header name={accounts[0].name} />
+          <Header name={accounts[0]?.name} />
           <Search />
           <Alarm />
           <Menu />

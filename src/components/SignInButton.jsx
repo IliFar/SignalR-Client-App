@@ -1,21 +1,17 @@
 import React from "react";
-import { useMsal } from "@azure/msal-react";
-import { loginRequest } from "../../authentication/authConfig";
+import { AppContext } from "./Data";
 
-function handleLogin(instance) {
-  instance.loginPopup(loginRequest).catch((e) => {
-    console.error(e);
-  });
-}
 /**
  * Renders a button which, when selected, will open a popup for login
  */
-export const SignInButton = () => {
-  const { instance } = useMsal();
-
+const SignInButton = () => {
+  const { handleLogin } = React.useContext(AppContext);
+  
   return (
-    <div className="button" onClick={() => handleLogin(instance)}>
-      Sign in
+    <div className="button" onClick={() => handleLogin()}>
+      <button>Sign In</button>
     </div>
   );
 };
+
+export default SignInButton;
