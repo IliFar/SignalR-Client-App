@@ -6,14 +6,12 @@ import Menu from "./components/menu/Menu";
 import { useIsAuthenticated, useMsal } from "@azure/msal-react";
 import Signin from "./components/Signin.jsx/Signin";
 import Header from "./components/header/Header";
-import BuildingAndDevices from "./components/BuildingAndDevices";
-import { BuildingAndDevicesContext } from "../context/BuidlingAndDevicesContext";
+import { AppContext } from "./components/Data";
+import { Outlet } from "react-router-dom";
 
 const App = () => {
   const isAuthenticated = useIsAuthenticated();
   const { accounts } = useMsal();
-  const { bldInfo, devices } = BuildingAndDevices();
-
   return (
     // <PageLayout />
     <>
@@ -21,12 +19,10 @@ const App = () => {
         <Signin />
       ) : (
         <>
-          <BuildingAndDevicesContext.Provider value={{ bldInfo, devices }}>
-            <Header name={accounts[0].name} />
-            <Search />
-            <Alarm />
-            <Menu />
-          </BuildingAndDevicesContext.Provider>
+          <Header name={accounts[0]?.name} />
+          <Search />
+          <Alarm />
+          <Menu />
         </>
       )}
     </>

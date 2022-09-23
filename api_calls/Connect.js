@@ -1,5 +1,4 @@
 import { emit } from "process";
-import Sensors from "../src/components/sensors/Connection";
 
 const signalR = require("@microsoft/signalr");
 

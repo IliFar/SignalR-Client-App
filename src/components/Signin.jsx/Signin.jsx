@@ -6,10 +6,9 @@ import {
   UnauthenticatedTemplate,
 } from "@azure/msal-react";
 import { loginRequest } from "../../../authentication/authConfig";
-import { SignInButton } from "../SignInButton";
+import SignInButton from "../SignInButton";
 
 const Signin = () => {
-  
   return <SignInButton />;
 };
 

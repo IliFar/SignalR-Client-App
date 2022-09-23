@@ -1,43 +1,29 @@
 import React, { useContext, useEffect, useState } from "react";
-import { BuildingAndDevicesContext } from "../../../context/BuidlingAndDevicesContext";
-
-import connectSignalR from "../../../api_calls/Connect";
-import Connection from "../sensors/Connection";
+import { AppContext } from "../Data";
 
 const allUpperLetters = (string) => {
-
   return string.toUpperCase();
-
-}
+};
 
 const Alarm = () => {
-  const { bldInfo, devices } = useContext(BuildingAndDevicesContext);
-  const [sensorData, setSensorData] = useState({});
-  const { url, token } = Connection();
+  const { devices, sensorsData } = React.useContext(AppContext);
 
-  const info = ""; 
+  const info = "";
 
-
-  useEffect(() => {
-    connectSignalR(setSensorData, url, token);
-  }, [url, token])
-
-  console.log(devices);
-
-  const listSensorData = devices.map((device) => 
-
-    { sensorData[0] != null && allUpperLetters(device.id) == sensorData[0].deviceId &&
-      // info = sensorData[0].value
-      console.log(`${sensorData[0].deviceId} && ${allUpperLetters(device.id)}` )
-      
-    }
-  );
+  const listSensorData = devices.map((device) => {
+    sensorsData[0] != null &&
+      allUpperLetters(device.id) == sensorsData[0].deviceId &&
+      console.log(
+        // info = sensorsData[0].value
+        `${sensorsData[0].deviceId} && ${allUpperLetters(device.id)}`
+      );
+    return sensorsData;
+  });
 
   return (
     <div className="alarm">
       Alarm
-      {/* {sensorData[0].value} */}
-      {/* {listSensorData} */}
+      {sensorsData.map((sensor) => sensor.value)}
       <p></p>
     </div>
   );
