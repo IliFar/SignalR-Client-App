@@ -10,9 +10,7 @@ const connectSignalR = async (setSensorData, url, token) => {
   connection.start();
 
   connection.on("newTelemetry", (data) => {
-
     setSensorData(data);
-    console.log(data);
   });
 };
 

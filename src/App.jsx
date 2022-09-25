@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./App.css";
+//import "./App.css";
 import Search from "./components/search/Search";
 import Alarm from "./components/alarm/Alarm";
 import Menu from "./components/menu/Menu";
@@ -8,6 +8,7 @@ import Signin from "./components/Signin.jsx/Signin";
 import Header from "./components/header/Header";
 import { AppContext } from "./components/Data";
 import { Outlet } from "react-router-dom";
+import AllRooms from "./components/allDevices/DevicesByRoom";
 
 const App = () => {
   const isAuthenticated = useIsAuthenticated();
@@ -23,6 +24,7 @@ const App = () => {
           <Search />
           <Alarm />
           <Menu />
+          <AllRooms />
         </>
       )}
     </>
