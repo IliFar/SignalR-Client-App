@@ -68,6 +68,10 @@ const Data = (props) => {
         getUnit(accessToken, setUnits);
       }
 
+      if(units[0] != undefined){
+        getExtraArr(units, setUnitList);
+      }
+
       if (accessToken != null && bldInfo.id != null) {
         getAllDevices(accessToken, bldInfo.id, setDevices);
       }
@@ -81,12 +85,6 @@ const Data = (props) => {
 
     }
   }, [accessToken, instance, bldInfo.id]);
-
-  useEffect(()=>{
-    if(units[0] != undefined){
-      getExtraArr(units, setUnitList);
-    }
-  }, [units])
 
 useEffect(()=>{ 
   if(unitList.length != 0){
@@ -119,7 +117,8 @@ useEffect(()=>{
           handleLogin,
           handleLogout,
           currentDevices, 
-          roomNameList
+          roomNameList,
+          alarmList
         }}
       >
         {props.children}

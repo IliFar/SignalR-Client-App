@@ -13,8 +13,8 @@ import AllRooms from "./components/allDevices/DevicesByRoom";
 const App = () => {
   const isAuthenticated = useIsAuthenticated();
   const { accounts } = useMsal();
+
   return (
-    // <PageLayout />
     <>
       {!isAuthenticated ? (
         <Signin />
@@ -22,7 +22,7 @@ const App = () => {
         <>
           <Header name={accounts[0]?.name} />
           <Search />
-          <Alarm />
+          <Alarm username={accounts[0]?.username}/>
           <Menu />
           <AllRooms />
         </>

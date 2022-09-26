@@ -1,29 +1,44 @@
 import { useContext } from "react";
 import { AppContext } from "../Data";
+import { restoreAlarm } from '../../../api_calls/restoreAlarm'
+import totalAlarm from "./totalAlarm";
 
-function ShowOneAlarm(props){
-  let isTooHigh = (props.value > props.maxValue)? ' is too high ': ' is too low ';
-  if(props.metricType==1){    
-      return <li key={props.id}>Temperature in {props.name} {isTooHigh}, {props.value} {props.unit}</li>   
-  }else{
-      return <li key={props.id}>Humidity in {props.name} {isTooHigh}, {props.value} {props.unit}</li>
-  }
-}
-
-const Alarm = () => {
+const Alarm = (props) => {
   const { alarmList} = useContext(AppContext);
-  const totalLarm = alarmList? `There is/are ${alarmList.length} alarm(s)` :'All is ok'
+  
+  const username = props.username;
 
-  const ShowAllAlarms = ()=> {
+  const ShowOneAlarm = (alarm, username)=>{
+    if(alarm){
+      let type = alarm.metricType== 1? 'Temperature ' : 'Humidity '
+    return(
+      <>
+      <div className="room_name">{alarm.name}</div>
+      <div className="value">{type} {alarm.value}{alarm.unit}</div>
+      <div className="range">Max: {alarm.maxValue} / Min: {alarm.minValue}</div>
+      {/* <button className="reset" onClick={restoreAlarm(alarm.id, username)}>Reset</button> */}
+      </>
+    )
+    }
+    
+  }
+  
+  const ShowAllAlarms = (alarmList)=> {
     if(alarmList){
-    alarmList.map(alarm=> ShowOneAlarm(alarm))
-  }}
+      return (
+        <>
+        {alarmList.length >0 && <p> Alarm list:</p>}
+        {alarmList.map(alarm=> ShowOneAlarm(alarm, username))}        
+        </>
+      )
+    }    
+  }
   return (
     <div className="alarm">
-    {totalLarm}
-    {ShowAllAlarms}
+    {totalAlarm(alarmList)}
+    {ShowAllAlarms(alarmList)}
     </div>
   );
 };
 
-export default Alarm;
+export default Alarm

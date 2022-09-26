@@ -11,6 +11,7 @@ export default function DeviceByRoom(){
             return <li key={props.id}>Humidity: {props.value} {props.unit}</li>
         }
     }
+    console.log('currDvs',currentDevices);
     if(currentDevices && roomNameList){
         return (
         <> All devices

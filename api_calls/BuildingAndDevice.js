@@ -45,19 +45,4 @@ async function getUnit(token, setUnits) {
     });
 }
 
-async function neutralizeAlarm(id, userEmail) {
-  return await axios({
-    method: "post",
-    url: "https://smarthut.azurewebsites.net/api/restorealarm",
-    headers: { Authorization: `Bearer ${token}` },
-  })
-    .then((res) => {
-      setUnits(res.data);
-      console.log(res.data);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-}
-
 export { getBuildingInfo, getAllDevices, getUnit };
