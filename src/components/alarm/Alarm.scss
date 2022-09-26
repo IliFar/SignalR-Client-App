@@ -1,0 +1,80 @@
+.alarms {
+    // display: flex;
+    position: relative;
+    background-color: rgb(78, 78, 78);
+    border-radius: 10px;
+    // align-items: center;
+    // padding: 5px;
+    color: white;
+    min-height: 80px;
+    min-width: 100vw;
+    animation: zoom-in-zoom-out 1s ease infinite;
+
+    .icon{
+        // background-color: turquoise;
+        margin-right: 20px;
+        margin-left: 10px;
+        color: rgb(255, 61, 61);
+        font-size: 65px;
+        position: absolute;
+        bottom: 9px;
+    }
+
+    .alarms-body {
+        // display: flex;
+        // flex-direction: column;
+        position: absolute;
+        right: 35%;
+        top: 10%;
+        height: 50;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        // background-color: turquoise;
+        min-height: 65px;
+
+        .room_name {
+            font-size: 20px;
+        }
+
+        .value {
+            font-size: 15px;
+            
+        }
+
+        .range{
+            font-size: 10px;
+            background-color: black;
+            padding: 3px;
+            border-radius: 5px;
+            width: 70%;
+            text-align: center;
+        }
+
+    }
+    .reset {
+        position: absolute;
+        bottom: 0px;
+        right: 0px;
+        background-color: rgb(255, 86, 86);
+        color: rgb(255, 255, 255);
+        padding: 5px;
+        border-radius: 0px 10px 10px 0px;
+        width: 20%;
+        height: 100%;
+        border: 0;
+        font-size: 15px;
+        
+    }
+}
+// @keyframes zoom-in-zoom-out {
+//     0% {
+//       transform: scale(0.5, 0.5);
+//     }
+//     50% {
+//       transform: scale(1, 1);
+//     }
+//     100% {
+//       transform: scale(0.5, 0.5);
+//     }
+//   }

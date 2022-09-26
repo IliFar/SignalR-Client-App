@@ -22,7 +22,7 @@ const App = () => {
         <>
           <Header name={accounts[0]?.name} />
           <Search />
-          <Alarm username={accounts[0]?.username}/>
+          <Alarm username={accounts[0]?.username} />
           <Menu />
           <AllRooms />
         </>

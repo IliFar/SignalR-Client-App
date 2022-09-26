@@ -14,7 +14,7 @@ export default function DeviceByRoom(){
     console.log('currDvs',currentDevices);
     if(currentDevices && roomNameList){
         return (
-        <> All devices
+        <> <h1>All Devices</h1>
             {roomNameList.map((roomName, i) => (
                 <ul key = {i} className='room'>
                     <div className="room_name">{capitalizeFirstLetter(roomName)}</div>

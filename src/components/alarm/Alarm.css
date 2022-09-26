@@ -1,0 +1,55 @@
+.alarms {
+  position: relative;
+  background-color: rgb(78, 78, 78);
+  border-radius: 10px;
+  color: white;
+  min-height: 80px;
+  min-width: 100vw;
+  -webkit-animation: zoom-in-zoom-out 1s ease infinite;
+          animation: zoom-in-zoom-out 1s ease infinite;
+}
+.alarms .icon {
+  margin-right: 20px;
+  margin-left: 10px;
+  color: rgb(255, 61, 61);
+  font-size: 65px;
+  position: absolute;
+  bottom: 9px;
+}
+.alarms .alarms-body {
+  position: absolute;
+  right: 35%;
+  top: 10%;
+  height: 50;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  min-height: 65px;
+}
+.alarms .alarms-body .room_name {
+  font-size: 20px;
+}
+.alarms .alarms-body .value {
+  font-size: 15px;
+}
+.alarms .alarms-body .range {
+  font-size: 10px;
+  background-color: black;
+  padding: 3px;
+  border-radius: 5px;
+  width: 70%;
+  text-align: center;
+}
+.alarms .reset {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  background-color: rgb(255, 86, 86);
+  color: rgb(255, 255, 255);
+  padding: 5px;
+  border-radius: 0px 10px 10px 0px;
+  width: 20%;
+  height: 100%;
+  border: 0;
+  font-size: 15px;
+}/*# sourceMappingURL=Alarm.css.map */
