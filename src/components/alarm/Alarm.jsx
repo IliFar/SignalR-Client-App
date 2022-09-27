@@ -28,9 +28,9 @@ const Alarm = (props) => {
               Max: {alarm.maxValue} / Min: {alarm.minValue}
             </div>
           </div>
-          {/* <button className="reset" onClick={restoreAlarm(alarm.id, username)}>
+          <button className="reset" >
             Reset
-          </button> */}
+          </button>
         </div>
       );
     }
@@ -40,7 +40,7 @@ const Alarm = (props) => {
     if (alarmList) {
       return (
         <>
-          {alarmList.length > 0 && <p> Alarm list:</p>}
+          
           {alarmList.map((alarm) => ShowOneAlarm(alarm, username))}
         </>
       );
@@ -49,6 +49,8 @@ const Alarm = (props) => {
   return (
     <div className="alarm">
       {totalAlarm(alarmList)}
+      {alarmList.length > 0 && <p className="alarm-list-p">Alarm list :</p>}
+      <hr className="line"/>
       {ShowAllAlarms(alarmList)}
     </div>
   );

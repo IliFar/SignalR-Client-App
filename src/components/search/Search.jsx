@@ -1,47 +1,51 @@
 import { useState, useContext } from "react";
 import { AppContext } from "../Data";
+import {BiSearchAlt} from "react-icons/bi";
+import "./Search.css";
 
-export default function SearchBox(){
-const [searchInput, setSearchInput] = useState('');
-const { roomNameList } = useContext(AppContext);
-const allRooms = document.getElementsByClassName('room');
+export default function SearchBox() {
+  const [searchInput, setSearchInput] = useState("");
+  const { roomNameList } = useContext(AppContext);
+  const allRooms = document.getElementsByClassName("room");
 
-const handleChange =(e)=>{
+  const handleChange = (e) => {
     e.preventDefault();
-    setSearchInput((e.target.value).toLowerCase());
-};
+    setSearchInput(e.target.value.toLowerCase());
+  };
 
-//Nothing in search box, show all
-if(allRooms.length>0 && searchInput.length==0){
-    for(let i = 0; i<roomNameList.length; i++) {
-        allRooms[i].classList.remove('hidden')
+  //Nothing in search box, show all
+  if (allRooms.length > 0 && searchInput.length == 0) {
+    for (let i = 0; i < roomNameList.length; i++) {
+      allRooms[i].classList.remove("hidden");
     }
-}
+  }
 
-if(allRooms.length>0 && searchInput.length>0){
+  if (allRooms.length > 0 && searchInput.length > 0) {
     //Reset, show all
-    for(let i = 0; i<roomNameList.length; i++) {
-        allRooms[i].classList.remove('hidden')
+    for (let i = 0; i < roomNameList.length; i++) {
+      allRooms[i].classList.remove("hidden");
     }
     //show result only
     roomNameList.map((name, i) => {
-        let roomName = name.toLowerCase();
-        if(!(roomName).includes(searchInput)){
-            allRooms[i].classList.add('hidden')
-        }
-    })
-}
+      let roomName = name.toLowerCase();
+      if (!roomName.includes(searchInput)) {
+        allRooms[i].classList.add("hidden");
+      }
+    });
+  }
 
-return (
+  return (
     <>
+      <div className="search">
         <input
-        className="search"
-        type="text"
-        placeholder="Search..."
-        onChange={handleChange}
-        value={searchInput} 
+          className="search-input"
+          type="text"
+          placeholder="Search..."
+          onChange={handleChange}
+          value={searchInput}
         />
+        <BiSearchAlt className="search-icon"/>
+      </div>
     </>
-)    
+  );
 }
-
