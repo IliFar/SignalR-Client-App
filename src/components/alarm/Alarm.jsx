@@ -3,6 +3,7 @@ import { AppContext } from "../Data";
 import { restoreAlarm } from "../../../api_calls/restoreAlarm";
 import totalAlarm from "./totalAlarm";
 import "./Alarm.css";
+import capitalizeFirstLetter from "../../services/capitalizeFirstLetter";
 import { TiWarningOutline } from "react-icons/ti";
 
 const Alarm = (props) => {
@@ -11,13 +12,14 @@ const Alarm = (props) => {
   const username = props.username;
 
   const ShowOneAlarm = (alarm, username) => {
-    if (alarm) {
+    if (alarm !=null) {
+      let roomname = capitalizeFirstLetter(alarm.name)
       let type = alarm.metricType == 1 ? "Temperature " : "Humidity ";
       return (
         <div className="alarms">
           <TiWarningOutline className="icon" />
           <div className="alarms-body">
-            <div className="room_name">{alarm.name}</div>
+            <div className="room_name">{roomname}</div>
             <div className="value">
               {type} {alarm.value}
               {alarm.unit}
@@ -26,9 +28,9 @@ const Alarm = (props) => {
               Max: {alarm.maxValue} / Min: {alarm.minValue}
             </div>
           </div>
-          <button className="reset" onClick={restoreAlarm(alarm.id, username)}>
+          {/* <button className="reset" onClick={restoreAlarm(alarm.id, username)}>
             Reset
-          </button>
+          </button> */}
         </div>
       );
     }

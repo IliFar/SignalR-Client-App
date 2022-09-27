@@ -1,12 +1,47 @@
-import React from "react";
-import "./Search.css";
+import { useState, useContext } from "react";
+import { AppContext } from "../Data";
 
-const Search = () => {
-  return (
-  <div className="search">
-    <input type="text" placeholder="Search..." className="search-input"/>
-  </div>
-  );
+export default function SearchBox(){
+const [searchInput, setSearchInput] = useState('');
+const { roomNameList } = useContext(AppContext);
+const allRooms = document.getElementsByClassName('room');
+
+const handleChange =(e)=>{
+    e.preventDefault();
+    setSearchInput((e.target.value).toLowerCase());
 };
 
-export default Search;
+//Nothing in search box, show all
+if(allRooms.length>0 && searchInput.length==0){
+    for(let i = 0; i<roomNameList.length; i++) {
+        allRooms[i].classList.remove('hidden')
+    }
+}
+
+if(allRooms.length>0 && searchInput.length>0){
+    //Reset, show all
+    for(let i = 0; i<roomNameList.length; i++) {
+        allRooms[i].classList.remove('hidden')
+    }
+    //show result only
+    roomNameList.map((name, i) => {
+        let roomName = name.toLowerCase();
+        if(!(roomName).includes(searchInput)){
+            allRooms[i].classList.add('hidden')
+        }
+    })
+}
+
+return (
+    <>
+        <input
+        className="search"
+        type="text"
+        placeholder="Search..."
+        onChange={handleChange}
+        value={searchInput} 
+        />
+    </>
+)    
+}
+

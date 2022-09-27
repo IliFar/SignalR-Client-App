@@ -13,11 +13,6 @@ const connectSignalR = async (setSensorData, url, token, restoreAlarm) => {
     setSensorData(data);
   });
 
-  try{connection.on("alarmNeutralized", () => {
-    restoreAlarm(id, userEmail);
-    });
-  }catch(err){
-  console.error(err)
-}}
+}
 
 export default connectSignalR;
