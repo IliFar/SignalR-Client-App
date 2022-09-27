@@ -1,28 +1,27 @@
 .alarms {
-    // display: flex;
     position: relative;
     background-color: rgb(78, 78, 78);
     border-radius: 10px;
-    // align-items: center;
-    // padding: 5px;
     color: white;
     min-height: 80px;
     min-width: 100vw;
-    animation: zoom-in-zoom-out 1s ease infinite;
+    margin-bottom: 10px;
+    
+    
+    
 
     .icon{
-        // background-color: turquoise;
         margin-right: 20px;
         margin-left: 10px;
         color: rgb(255, 61, 61);
         font-size: 65px;
         position: absolute;
         bottom: 9px;
+        animation: zoom-out 1s ease infinite;
     }
 
     .alarms-body {
-        // display: flex;
-        // flex-direction: column;
+        
         position: absolute;
         right: 35%;
         top: 10%;
@@ -30,7 +29,6 @@
         display: flex;
         justify-content: space-between;
         flex-direction: column;
-        // background-color: turquoise;
         min-height: 65px;
 
         .room_name {
@@ -66,15 +64,36 @@
         font-size: 15px;
         
     }
+
+
+
 }
-// @keyframes zoom-in-zoom-out {
-//     0% {
-//       transform: scale(0.5, 0.5);
-//     }
-//     50% {
-//       transform: scale(1, 1);
-//     }
-//     100% {
-//       transform: scale(0.5, 0.5);
-//     }
-//   }
+.alarm-list-p {
+    margin: 10px 0 10px 5px;
+    font-size: larger;
+    font-weight: bold;
+}
+
+.line  {
+    margin-bottom: 10px;
+    min-width: 100vw;
+    border: 1px solid black;
+}
+
+.alarm-length {
+    margin-left: 5px;
+    margin-top: 10px;
+}
+
+
+@keyframes zoom-out {
+    0% {
+      transform: scale(0.5, 0.5);
+    }
+    50% {
+      transform: scale(1, 1);
+    }
+    100% {
+      transform: scale(0.5, 0.5);
+    }
+  }
