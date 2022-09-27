@@ -15,6 +15,7 @@ const Alarm = (props) => {
     if (alarm !=null) {
       let roomname = capitalizeFirstLetter(alarm.name)
       let type = alarm.metricType == 1 ? "Temperature " : "Humidity ";
+
       return (
         <div className="alarms">
           <TiWarningOutline className="icon" />
