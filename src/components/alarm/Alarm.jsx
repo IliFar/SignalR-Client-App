@@ -71,7 +71,6 @@ const Alarm = (props) => {
       <div className="alarms-container">{ShowAllAlarms(alarmList)}</div>
       <DeviceByRoom/>
     </div>
-    <AllDevices />
     </>
     
   );
