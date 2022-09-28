@@ -1,0 +1,33 @@
+.devices {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 20px;
+  min-height: 600;
+  width: 100%;
+}
+.devices .room {
+  background-color: rgb(202, 166, 166);
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  list-style: none;
+  min-height: 80;
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  justify-content: space-between;
+}
+.devices .room .room_name {
+  color: white;
+  font-size: x-large;
+  margin-bottom: 5px;
+}
+.devices .room li {
+  color: rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
+  padding: 5px;
+  border-radius: 10px;
+  margin-bottom: 5px;
+}/*# sourceMappingURL=Devices.css.map */

@@ -30,4 +30,35 @@ async function getAllDevices(token, buildingId, setDevices) {
     });
 }
 
-export { getBuildingInfo, getAllDevices };
+async function getUnit(token, setUnits) {
+  return await axios({
+    method: "get",
+    url: "https://api.smarthut.se/Unit",
+    headers: { Authorization: `Bearer ${token}` },
+  })
+    .then((res) => {
+      setUnits(res.data);
+      console.log(res.data);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+
+async function restoreAlarm (id, userEmail){
+  await axios({
+      method: "POST",
+      url: "https://smarthut.azurewebsites.net/api/restorealarm",
+      data: { 
+          deviceId: id,
+          userName: userEmail },
+  })
+      .then((res) => {
+        console.log('restore success',res);
+      })
+      .catch((error) => {
+      console.log('RestoreAlarmError',error);
+      });
+  };
+
+export { getBuildingInfo, getAllDevices, getUnit, restoreAlarm };
