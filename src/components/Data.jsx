@@ -25,7 +25,7 @@ const Data = (props) => {
   const [unitList, setUnitList] = useState([]);
   const [deviceList, setDeviceList] = useState([]);
   const [roomNameList, setRoomNameList] = useState([]);
-  const [handShake, setHandShake] = React.useState({});
+  // const [handShake, setHandShake] = React.useState({});
   const [sensorsData, setSensorData] = React.useState([]);
   const { instance, accounts } = useMsal();
   const [currentDevices, setCurrentDevices] = useState({});
@@ -76,11 +76,14 @@ const Data = (props) => {
         getAllDevices(accessToken, bldInfo.id, setDevices);
       }
       if (accounts[0] != null) {
-        negotiate(setHandShake, accounts[0].username);
+        negotiate(accounts[0].username);
       }
 
-      if (handShake != null) {
-        connectSignalR(setSensorData, handShake.url, handShake.accessToken);
+      if (accounts[0] !=null) {
+        const url = sessionStorage.getItem("url");
+        const token = sessionStorage.getItem("token");
+        connectSignalR(setSensorData, url, token);
+        console.log(url, "test")
       }
 
     }
