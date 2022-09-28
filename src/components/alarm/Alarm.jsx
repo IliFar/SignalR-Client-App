@@ -26,7 +26,7 @@ const Alarm = (props) => {
         restoreAlarm(alarm.id, username);
         removeAlarm(alarmList, alarm);
       } 
-      console.log(alarmList)
+      // console.log(alarmList)
       return (
         <div className="alarms">
           <TiWarningOutline className="icon" />

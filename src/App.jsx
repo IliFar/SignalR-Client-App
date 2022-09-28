@@ -19,8 +19,8 @@ const App = () => {
       ) : (
         <>
           <Header name={accounts[0]?.name} />
-          <Alarm username={accounts[0]?.username} />
           <Search />
+          <Alarm username={accounts[0]?.username} />
           <DevicesByRoom />
           <Menu />
           
