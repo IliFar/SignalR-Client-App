@@ -14,12 +14,14 @@
   font-size: 65px;
   position: absolute;
   bottom: 9px;
-  -webkit-animation: zoom-out 1s ease infinite;
-          animation: zoom-out 1s ease infinite;
+  align-items: center;
+  transition: 2s;
+  -webkit-animation: zoom-out 1s ease ;
+          animation: zoom-out 1s ease ;
 }
 .alarms .alarms-body {
   position: absolute;
-  right: 35%;
+  right: 45%;
   top: 10%;
   height: 50;
   display: flex;

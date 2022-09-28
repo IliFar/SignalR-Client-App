@@ -12,10 +12,10 @@
     i {
         font-size: 40;
         &:active {
-            background-color: palevioletred;
+            background-color:  (34,121,195);
         }
         &:hover {
-            background-color: palevioletred;
+            background-color:  (34,121,195);
             border-radius: 50%;
         }
     }
@@ -33,7 +33,7 @@
         .alarm-count {
             position: relative;
             top: 0;
-            left: 5;
+            left: 47%;
             color: white;
             font-size: large;
         }

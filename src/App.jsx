@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./App.css";
 import Search from "./components/search/Search";
 import Alarm from "./components/alarm/Alarm";

@@ -13,10 +13,10 @@
   font-size: 40;
 }
 .menu i:active {
-  background-color: palevioletred;
+  background-color: rgb(116, 170, 217);
 }
 .menu i:hover {
-  background-color: palevioletred;
+  background-color:  rgb(116, 170, 217);
   border-radius: 50%;
 }
 .menu .alarm-home {
@@ -26,14 +26,16 @@
   width: 20px;
   position: absolute;
   top: 5;
-  left: 175;
-  -webkit-animation: zoom-in-zoom-out 1s ease infinite;
-          animation: zoom-in-zoom-out 1s ease infinite;
+  left: 47%;
+  -webkit-animation: zoom-in-zoom-out 1s ease ;
+          animation: zoom-in-zoom-out 1s ease ;
 }
 .menu .alarm-home .alarm-count {
   position: relative;
   top: 0;
   left: 5;
+  align-items: center;
+    justify-content: space-evenly;
   color: white;
   font-size: large;
 }

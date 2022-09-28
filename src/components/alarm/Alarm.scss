@@ -17,13 +17,14 @@
         font-size: 65px;
         position: absolute;
         bottom: 9px;
-        animation: zoom-out 1s ease infinite;
+        transition: 2s;
+        animation: zoom-out 1s ease ;
     }
 
     .alarms-body {
         
         position: absolute;
-        right: 35%;
+        right: 45%;
         top: 10%;
         height: 50;
         display: flex;
@@ -61,12 +62,8 @@
         width: 20%;
         height: 100%;
         border: 0;
-        font-size: 15px;
-        
+        font-size: 15px;        
     }
-
-
-
 }
 .alarm-list-p {
     margin: 10px 0 10px 5px;
@@ -88,12 +85,12 @@
 
 @keyframes zoom-out {
     0% {
-      transform: scale(0.5, 0.5);
+    transform: scale(0.5, 0.5);
     }
     50% {
-      transform: scale(1, 1);
+    transform: scale(1, 1);
     }
     100% {
-      transform: scale(0.5, 0.5);
+    transform: scale(0.5, 0.5);
     }
-  }
+}

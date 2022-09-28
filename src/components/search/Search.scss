@@ -1,6 +1,6 @@
 .search {
     min-height: 70px;
-    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.62);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -14,7 +14,7 @@
     .search-icon {
         color: white;
         position: absolute;
-        right: 30px;
+        right: 10%;
         border: 1px solid black;
         border-radius: 50%;
         background-color: rgba(0, 0, 0, 0.712);
