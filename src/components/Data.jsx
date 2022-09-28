@@ -105,7 +105,6 @@ const Data = (props) => {
     if (currentDevices.length > 0 && sensorsData[0] != null) {
       getCurrentDevices(currentDevices, deviceList, sensorsData[0]);
       getAlarmList(currentDevices, setAlarmList);
-      console.log(currentDevices, "test");
     }
   }, [currentDevices,sensorsData[0]]);
 

@@ -69,7 +69,7 @@ const Alarm = (props) => {
         </div>
       )}
       <div className="alarms-container">{ShowAllAlarms(alarmList)}</div>
-      <DeviceByRoom/>
+      {!alarmList.length > 0 && <DeviceByRoom/>}
     </div>
     </>
     
