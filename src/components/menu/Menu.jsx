@@ -2,19 +2,22 @@ import React from "react";
 import "./Menu.css";
 import { SignInButton } from "../SignInButton";
 import { SignOutButton } from "../SignOutButton";
-import icons from "../icons/Icons";
+import { HiHome } from "react-icons/hi";
+import { BiDevices } from "react-icons/bi";
 import { AppContext } from "../Data";
 
 const Menu = () => {
   const { alarmList } = React.useContext(AppContext);
   return (
     <div className="menu">
-      <i>{icons.device}</i>
-      <i>{icons.home}</i>
-      <SignOutButton />
-      {alarmList && <div className="alarm-home">
-        <span className="alarm-count">{alarmList.length}</span>
-      </div>}
+      <div className="menu-icons">
+        <BiDevices className="menu-icon" />
+        <div className="home-icon">
+          <HiHome className="menu-icon" />
+          {alarmList.length > 0 && <span>{alarmList.length}</span>}
+        </div>
+        <SignOutButton />
+      </div>
     </div>
   );
 };

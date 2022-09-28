@@ -1,88 +1,91 @@
-.alarms {
-    position: relative;
-    background-color: rgb(78, 78, 78);
-    border-radius: 10px;
-    color: white;
-    min-height: 80px;
-    min-width: 100vw;
-    margin-bottom: 10px;
-    
-    
-    
+.alarm {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 10px;
 
-    .icon{
-        margin-right: 20px;
-        margin-left: 10px;
-        color: rgb(255, 61, 61);
-        font-size: 65px;
-        position: absolute;
-        bottom: 9px;
-        animation: zoom-out 1s ease infinite;
-    }
-
-    .alarms-body {
-        
-        position: absolute;
-        right: 35%;
-        top: 10%;
-        height: 50;
+    .alarms {
+        background-color: rgb(0, 0, 0);
+        border-radius: 10px;
+        color: white;
+        min-height: 80px;
+        margin-bottom: 10px;
         display: flex;
-        justify-content: space-between;
-        flex-direction: column;
-        min-height: 65px;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
 
-        .room_name {
-            font-size: 20px;
+        .icon{
+            margin-right: 20px;
+            margin-left: 10px;
+            color: rgb(255, 61, 61);
+            font-size: 65px;
+            bottom: 9px;
+            animation: zoom-out 1s ease infinite;
         }
-
-        .value {
-            font-size: 15px;
+    
+        .alarms-body {
             
+            right: 35%;
+            top: 10%;
+            height: 50;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            min-height: 65px;
+    
+            .room_name {
+                font-size: 20px;
+            }
+    
+            .value {
+                font-size: 15px;
+                
+            }
+    
+            .range{
+                font-size: 10px;
+                background-color: rgb(255, 255, 255);
+                padding: 3px;
+                border-radius: 5px;
+                width: 70%;
+                text-align: center;
+                color: black;
+                font-weight: 10px;
+            }
+    
         }
-
-        .range{
-            font-size: 10px;
-            background-color: black;
-            padding: 3px;
-            border-radius: 5px;
-            width: 70%;
-            text-align: center;
+        .reset {
+            
+            width: 20%;
+            min-height: 80px;
+            background-color: rgb(255, 86, 86);
+            color: rgb(255, 255, 255);
+            padding: 5px;
+            border-radius: 0px 10px 10px 0px;
+            border: 0;
+            font-size: 15px;
+            margin-left: auto;
         }
-
+    
+    
+    
     }
-    .reset {
-        position: absolute;
-        bottom: 0px;
-        right: 0px;
-        background-color: rgb(255, 86, 86);
-        color: rgb(255, 255, 255);
-        padding: 5px;
-        border-radius: 0px 10px 10px 0px;
-        width: 20%;
-        height: 100%;
-        border: 0;
-        font-size: 15px;
-        
+    .alarm-list-p {
+        margin: 10px 0 10px 0px;
+        font-size: larger;
+        font-weight: bold;
     }
-
-
-
-}
-.alarm-list-p {
-    margin: 10px 0 10px 5px;
-    font-size: larger;
-    font-weight: bold;
-}
-
-.line  {
-    margin-bottom: 10px;
-    min-width: 100vw;
-    border: 1px solid black;
-}
-
-.alarm-length {
-    margin-left: 5px;
-    margin-top: 10px;
+    
+    .line  {
+        margin-bottom: 10px;
+        width: 100%;
+        border: 1px solid black;
+    }
+    
+    .alarm-length {
+        margin-top: 10px;
+    }
 }
 
 
@@ -95,5 +98,54 @@
     }
     100% {
       transform: scale(0.5, 0.5);
+    }
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1023px){
+    .alarm {
+        .alarms-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            width: 100%;
+            .alarms {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                align-items: center;
+                min-width: 30%;
+                height: 200px;
+                margin-right: 5px;
+                margin-top: 10px;
+                border-radius: 10px;
+                
+                .alarms-body {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    align-items: center;
+                    flex-direction: column;
+                    text-align: center;
+                    height: 40%;
+                    .range {
+                        text-align: center;
+                        width: 200%;
+                        font-size: 15px;
+                        padding: 3px;
+                        font-weight: 10px;
+                    }
+                }
+                
+                .reset {
+                    margin-top: auto !important;
+                    margin: 0px;
+                    min-height: 20% !important;
+                    width: 100%;
+                    border-radius: 0 0 10px 10px;
+                }
+            }
+        }
     }
   }

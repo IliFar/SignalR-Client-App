@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import { AppContext } from "../Data";
-import {BiSearchAlt} from "react-icons/bi";
+import { BiSearchAlt } from "react-icons/bi";
 import "./Search.css";
 
 export default function SearchBox() {
@@ -37,14 +37,18 @@ export default function SearchBox() {
   return (
     <>
       <div className="search">
-        <input
-          className="search-input"
-          type="text"
-          placeholder="Search..."
-          onChange={handleChange}
-          value={searchInput}
-        />
-        <BiSearchAlt className="search-icon"/>
+        <div className="search-div">
+          <input
+            className="search-input"
+            type="text"
+            placeholder="Search..."
+            onChange={handleChange}
+            value={searchInput}
+          />
+          <span className="search-icon">
+            <BiSearchAlt />
+          </span>
+        </div>
       </div>
     </>
   );

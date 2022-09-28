@@ -4,22 +4,31 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
-.search .search-input {
+.search .search-div {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  height: 90%;
+}
+.search .search-div .search-input {
   border: 2px solid black;
   border-radius: 30px;
   height: 40px;
-  min-width: 90%;
+  width: 100%;
   padding: 10px;
 }
-.search .search-icon {
-  color: white;
+.search .search-div .search-icon {
   position: absolute;
-  right: 30px;
-  border: 1px solid black;
+  color: rgb(0, 0, 0);
+  position: absolute;
+  right: 10px;
+  top: 10px;
   border-radius: 50%;
-  background-color: rgba(0, 0, 0, 0.712);
-  padding: 5px;
-  font-size: 30px;
-  font-weight: bold;
+  width: 20px;
+  height: 20px;
+  font-size: 20px;
 }/*# sourceMappingURL=Search.css.map */
