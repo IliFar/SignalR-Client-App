@@ -6,6 +6,7 @@ import "./Alarm.css";
 import capitalizeFirstLetter from "../../services/capitalizeFirstLetter";
 import { TiWarningOutline } from "react-icons/ti";
 import { MdOutlineGppGood } from "react-icons/md";
+import DeviceByRoom from "../allDevices/DevicesByRoom";
 
 const Alarm = (props) => {
   const { alarmList, setAlarmList } = useContext(AppContext);
@@ -66,6 +67,7 @@ const Alarm = (props) => {
         </div>
       )}
       <div className="alarms-container">{ShowAllAlarms(alarmList)}</div>
+      <DeviceByRoom/>
     </div>
   );
 };
