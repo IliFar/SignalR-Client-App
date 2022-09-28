@@ -9,7 +9,7 @@ import connectSignalR from "../../api_calls/Connect";
 import negotiate from "../../api_calls/Negotiate";
 import { loginRequest } from "../../authentication/authConfig";
 import initDevices from "../services/initDevices";
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from "react";
 import getExtraArr from "../services/getExtraArr";
 import getCurrentDevices from "../services/getCurrentDevices";
 import getRoomNames from "../services/getRoomNames";
@@ -64,11 +64,12 @@ const Data = (props) => {
 
     if (useIsAuthenticated) {
       if (accessToken != null) {
-        getBuildingInfo(accessToken, setBldInfo).then(getUnit(accessToken, setUnits))
-        
+        getBuildingInfo(accessToken, setBldInfo).then(
+          getUnit(accessToken, setUnits)
+        );
       }
 
-      if(units[0] != undefined){
+      if (units[0] != undefined) {
         getExtraArr(units, setUnitList);
       }
 
@@ -79,39 +80,34 @@ const Data = (props) => {
         negotiate(accounts[0].username);
       }
 
-      if (accounts[0] !=null) {
+      if (accounts[0] != null) {
         const url = sessionStorage.getItem("url");
         const token = sessionStorage.getItem("token");
         connectSignalR(setSensorData, url, token);
-        console.log(url, "test")
+        console.log(url, "test");
       }
-
     }
   }, [accessToken, instance, bldInfo.id]);
 
-useEffect(()=>{ 
-  if(unitList.length != 0){
-    initDevices(devices, setCurrentDevices, units, unitList)
-  }
-}, [devices, unitList])
+  useEffect(() => {
+    if (unitList.length != 0) {
+      initDevices(devices, setCurrentDevices, units, unitList);
+    }
+  }, [devices, unitList]);
 
-useEffect(()=>{
-  if(devices[0] != null){
-    getExtraArr(devices, setDeviceList);
-    getRoomNames(devices, setRoomNameList);
-  }
-},[devices])
+  useEffect(() => {
+    if (devices[0] != null) {
+      getExtraArr(devices, setDeviceList);
+      getRoomNames(devices, setRoomNameList);
+    }
+  }, [devices]);
 
-useEffect(()=>{
-  if(currentDevices[0] !=null && sensorsData[0]!=null){
-    getCurrentDevices(
-      currentDevices, 
-      deviceList, 
-      sensorsData[0], 
-    );
-    getAlarmList(currentDevices, setAlarmList);
-  }
-}, [sensorsData[0]])
+  useEffect(() => {
+    if (currentDevices[0] != null && sensorsData[0] != null) {
+      getCurrentDevices(currentDevices, deviceList, sensorsData[0]);
+      getAlarmList(currentDevices, setAlarmList);
+    }
+  }, [sensorsData[0]]);
 
   return (
     <>
@@ -119,9 +115,10 @@ useEffect(()=>{
         value={{
           handleLogin,
           handleLogout,
-          currentDevices, 
+          currentDevices,
           roomNameList,
-          alarmList, setAlarmList
+          alarmList,
+          setAlarmList,
         }}
       >
         {props.children}

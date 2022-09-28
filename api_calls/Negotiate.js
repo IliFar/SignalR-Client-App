@@ -12,7 +12,7 @@ const negotiate = async (userEmail) => {
       let a = sessionStorage.setItem("url", url);
       let b = sessionStorage.setItem("token", token);
       console.log(a, "url");
-      console.log(b, "token")
+      console.log(b, "token");
     })
     .catch((error) => {
       console.log(error);

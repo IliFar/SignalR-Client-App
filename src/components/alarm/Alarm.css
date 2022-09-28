@@ -139,4 +139,49 @@
     width: 100%;
     border-radius: 0 0 10px 10px;
   }
+}
+@media screen and (min-width: 1024px) {
+  .alarm .alarms-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 100%;
+  }
+  .alarm .alarms-container .alarms {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+    min-width: 15%;
+    height: 200px;
+    margin-right: 5px;
+    margin-top: 10px;
+    border-radius: 10px;
+  }
+  .alarm .alarms-container .alarms .alarms-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    height: 50%;
+    margin-bottom: 5px;
+  }
+  .alarm .alarms-container .alarms .alarms-body .range {
+    width: 100%;
+    text-align: center;
+    font-size: 15px;
+    padding: 3px;
+    font-weight: 10px;
+  }
+  .alarm .alarms-container .alarms .reset {
+    margin-top: auto !important;
+    margin: 0px;
+    min-height: 20% !important;
+    width: 100%;
+    border-radius: 0 0 10px 10px;
+  }
 }/*# sourceMappingURL=Alarm.css.map */
