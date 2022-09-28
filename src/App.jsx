@@ -23,7 +23,7 @@ const App = () => {
           <Search />
           <Router>
             <Routes>
-              <Route path="/" element={<Alarm />} />
+              <Route path="/" element={<Alarm username={accounts[0].username}/>} />
               <Route path="allDevices" element={<DevicesByRoom />} />
             </Routes>
               <Menu />
