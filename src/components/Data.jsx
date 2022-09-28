@@ -26,9 +26,9 @@ const Data = (props) => {
   const [deviceList, setDeviceList] = useState([]);
   const [roomNameList, setRoomNameList] = useState([]);
   // const [handShake, setHandShake] = React.useState({});
-  const [sensorsData, setSensorData] = React.useState([]);
+  const [sensorsData, setSensorData] = React.useState(null);
   const { instance, accounts } = useMsal();
-  const [currentDevices, setCurrentDevices] = useState({});
+  const [currentDevices, setCurrentDevices] = useState([]);
   const [alarmList, setAlarmList] = useState([]);
 
   const request = {
@@ -61,18 +61,19 @@ const Data = (props) => {
           });
         });
     }
-
+    
     if (useIsAuthenticated) {
       if (accessToken != null) {
         getBuildingInfo(accessToken, setBldInfo).then(
           getUnit(accessToken, setUnits)
         );
+        console.log('units', units)
       }
-
-      if (units[0] != undefined) {
+      
+      if (units.length>0) {
         getExtraArr(units, setUnitList);
       }
-
+      
       if (accessToken != null && bldInfo.id != null) {
         getAllDevices(accessToken, bldInfo.id, setDevices);
       }
@@ -84,16 +85,15 @@ const Data = (props) => {
         const url = sessionStorage.getItem("url");
         const token = sessionStorage.getItem("token");
         connectSignalR(setSensorData, url, token);
-        console.log(url, "test");
       }
     }
-  }, [accessToken, instance, bldInfo.id]);
+  }, [accessToken, instance, bldInfo.id], units);
 
   useEffect(() => {
     if (unitList.length != 0) {
       initDevices(devices, setCurrentDevices, units, unitList);
     }
-  }, [devices, unitList]);
+  }, [devices, units, unitList]);
 
   useEffect(() => {
     if (devices[0] != null) {
@@ -103,11 +103,11 @@ const Data = (props) => {
   }, [devices]);
 
   useEffect(() => {
-    if (currentDevices[0] != null && sensorsData[0] != null) {
+    if (currentDevices.length>0 && sensorsData != null ) {
       getCurrentDevices(currentDevices, deviceList, sensorsData[0]);
       getAlarmList(currentDevices, setAlarmList);
     }
-  }, [sensorsData[0]]);
+  }, [currentDevices, sensorsData]);
 
   return (
     <>

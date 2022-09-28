@@ -33,4 +33,7 @@
   padding: 5px;
   border-radius: 10px;
   margin-bottom: 5px;
+}
+.devices .hidden{
+  display: none;
 }/*# sourceMappingURL=Devices.css.map */
