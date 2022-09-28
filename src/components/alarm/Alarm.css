@@ -25,11 +25,11 @@
           animation: zoom-out 1s ease infinite;
 }
 .alarm .alarms .alarms-body {
-  height: 60;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   flex-wrap: wrap;
+  height: 80;
 }
 .alarm .alarms .alarms-body .room_name {
   font-size: 20px;
@@ -71,6 +71,27 @@
 .alarm .alarm-length {
   margin-top: 10px;
 }
+.alarm .ok {
+  margin: 10px 0 10px 0;
+}
+.alarm .no-alarms {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(270deg, #246655, #86c5b4, #868dc5, #c586a4);
+  background-size: 800% 800%;
+  padding: 20px;
+  border-radius: 10px;
+  color: white;
+  -webkit-animation: flow-gradient 9s ease infinite;
+          animation: flow-gradient 9s ease infinite;
+}
+.alarm .no-alarms .no-alarms-icon {
+  font-size: 300px;
+  color: rgb(255, 255, 255);
+}
 
 @-webkit-keyframes zoom-out {
   0% {
@@ -93,6 +114,28 @@
   }
   100% {
     transform: scale(0.5, 0.5);
+  }
+}
+@-webkit-keyframes flow-gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@keyframes flow-gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }
 @media screen and (min-width: 768px) and (max-width: 1023px) {

@@ -1,31 +1,32 @@
 import { useContext } from "react";
 import { AppContext } from "../Data";
-import {restoreAlarm} from "../../../api_calls/BuildingAndDevice";
+import { restoreAlarm } from "../../../api_calls/BuildingAndDevice";
 import totalAlarm from "./totalAlarm";
 import "./Alarm.css";
 import capitalizeFirstLetter from "../../services/capitalizeFirstLetter";
 import { TiWarningOutline } from "react-icons/ti";
+import { MdOutlineGppGood } from "react-icons/md";
 
 const Alarm = (props) => {
   const { alarmList, setAlarmList } = useContext(AppContext);
 
   const username = props.username;
 
-  const removeAlarm=(alarmList, alarm)=>{
-    const newArr = alarmList.filter(al=>{
+  const removeAlarm = (alarmList, alarm) => {
+    const newArr = alarmList.filter((al) => {
       return al.id != alarm.id;
     });
     setAlarmList(newArr);
-  }
+  };
 
   const ShowOneAlarm = (alarm, username) => {
     if (alarm != null) {
       let roomname = capitalizeFirstLetter(alarm.name);
       let type = alarm.metricType == 1 ? "Temperature " : "Humidity ";
-      function handleClick (){
+      function handleClick() {
         restoreAlarm(alarm.id, username);
         removeAlarm(alarmList, alarm);
-      } 
+      }
       // console.log(alarmList)
       return (
         <div className="alarms">
@@ -50,11 +51,7 @@ const Alarm = (props) => {
 
   const ShowAllAlarms = (alarmList) => {
     if (alarmList) {
-      return (
-        <>          
-          {alarmList.map((alarm) => ShowOneAlarm(alarm, username))}
-        </>
-      );
+      return <>{alarmList.map((alarm) => ShowOneAlarm(alarm, username))}</>;
     }
   };
   return (
@@ -62,6 +59,12 @@ const Alarm = (props) => {
       {totalAlarm(alarmList)}
       {alarmList.length > 0 && <p className="alarm-list-p">Alarm list :</p>}
       <hr className="line" />
+      {alarmList.length == 0 && (
+        <div className="no-alarms">
+          <h1>No Alarms</h1>
+          <MdOutlineGppGood className="no-alarms-icon"/>
+        </div>
+      )}
       <div className="alarms-container">{ShowAllAlarms(alarmList)}</div>
     </div>
   );

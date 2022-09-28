@@ -6,5 +6,5 @@ export default function getCurrentDevices(currentDevices, deviceList, sensor){
     let isNormal = min<= sensor.value && sensor.value <= max;
     curr.value = (sensor.value).toFixed(1);
     curr.time = sensor.time;
-    curr.hasAlarm = isNormal;
+    curr.hasAlarm = !isNormal;
 }

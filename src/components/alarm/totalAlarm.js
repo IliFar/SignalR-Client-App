@@ -5,8 +5,8 @@ export default function totalAlarm (alarmList){
 
     return (
         <>
-            {alarmList.length == 0 ? (<h3 className="ok">All is Ok</h3>) 
-                : alarmList.length == 1 ?(<h3 className="alarm-length">There is {alarmList.length} Alarm</h3>)
+            {alarmList.length == 0 ? (<h1 className="ok">All is Ok</h1>) 
+                : alarmList.length == 1 ?(<h1 className="alarm-length">There is {alarmList.length} Alarm</h1>)
                 : (<h1 className="alarm-length">There are {alarmList.length} Alarms</h1>)}
         </>
     )

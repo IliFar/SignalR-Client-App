@@ -13,9 +13,12 @@ const Menu = () => {
   return (
     <div className="menu">
       <div className="menu-icons">
-        <BiDevices className="menu-icon" onClick={() => navigate("/allDevices")} />
+        <BiDevices
+          className="menu-icon"
+          onClick={() => navigate("/allDevices")}
+        />
         <div className="home-icon">
-          <HiHome className="menu-icon" onClick={() => navigate("/")} /> 
+          <HiHome className="menu-icon" onClick={() => navigate("/")} />
           {alarmList.length > 0 && <span>{alarmList.length}</span>}
         </div>
         <SignOutButton />
