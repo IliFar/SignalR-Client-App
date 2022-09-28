@@ -64,8 +64,8 @@ const Data = (props) => {
 
     if (useIsAuthenticated) {
       if (accessToken != null) {
-        getBuildingInfo(accessToken, setBldInfo);
-        getUnit(accessToken, setUnits);
+        getBuildingInfo(accessToken, setBldInfo).then(getUnit(accessToken, setUnits))
+        
       }
 
       if(units[0] != undefined){
@@ -118,7 +118,7 @@ useEffect(()=>{
           handleLogout,
           currentDevices, 
           roomNameList,
-          alarmList
+          alarmList, setAlarmList
         }}
       >
         {props.children}

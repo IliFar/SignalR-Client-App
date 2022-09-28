@@ -1,20 +1,32 @@
 import { useContext } from "react";
 import { AppContext } from "../Data";
-import { restoreAlarm } from "../../../api_calls/restoreAlarm";
+import {restoreAlarm} from "../../../api_calls/BuildingAndDevice";
 import totalAlarm from "./totalAlarm";
 import "./Alarm.css";
 import capitalizeFirstLetter from "../../services/capitalizeFirstLetter";
 import { TiWarningOutline } from "react-icons/ti";
 
 const Alarm = (props) => {
-  const { alarmList } = useContext(AppContext);
+  const { alarmList, setAlarmList } = useContext(AppContext);
 
   const username = props.username;
+
+  const removeAlarm=(alarmList, alarm)=>{
+    const newArr = alarmList.filter(al=>{
+      return al.id != alarm.id;
+    });
+    setAlarmList(newArr);
+  }
 
   const ShowOneAlarm = (alarm, username) => {
     if (alarm != null) {
       let roomname = capitalizeFirstLetter(alarm.name);
       let type = alarm.metricType == 1 ? "Temperature " : "Humidity ";
+      function handleClick (){
+        restoreAlarm(alarm.id, username);
+        removeAlarm(alarmList, alarm);
+      } 
+      console.log(alarmList)
       return (
         <div className="alarms">
           <TiWarningOutline className="icon" />
@@ -28,7 +40,9 @@ const Alarm = (props) => {
               Max: {alarm.maxValue} / Min: {alarm.minValue}
             </div>
           </div>
-          <button className="reset">Reset</button>
+          <button className="reset" onClick={handleClick}>
+            Reset
+          </button>
         </div>
       );
     }
@@ -36,7 +50,11 @@ const Alarm = (props) => {
 
   const ShowAllAlarms = (alarmList) => {
     if (alarmList) {
-      return <>{alarmList.map((alarm) => ShowOneAlarm(alarm, username))}</>;
+      return (
+        <>          
+          {alarmList.map((alarm) => ShowOneAlarm(alarm, username))}
+        </>
+      );
     }
   };
   return (

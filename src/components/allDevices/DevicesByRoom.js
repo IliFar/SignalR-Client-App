@@ -18,7 +18,7 @@ export default function DeviceByRoom(){
         return (
             <>
                 {roomNameList.map((roomName, i) => (
-                    <ul key = {i} className='room'>
+                    <ul key = {i.toString()} className='room'>
                         <div className="room_name">{capitalizeFirstLetter(roomName)}</div>
                         {currentDevices.map((device)=>(               
                             device.name == roomName && OneDevice(device)
