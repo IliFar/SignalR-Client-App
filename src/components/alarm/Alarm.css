@@ -85,8 +85,8 @@
   padding: 20px;
   border-radius: 10px;
   color: white;
-  -webkit-animation: flow-gradient 9s ease infinite;
-          animation: flow-gradient 9s ease infinite;
+  -webkit-animation: flow-gradient 4s ease infinite;
+          animation: flow-gradient 4s ease infinite;
 }
 .alarm .no-alarms .no-alarms-icon {
   font-size: 300px;

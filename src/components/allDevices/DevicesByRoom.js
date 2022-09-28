@@ -14,19 +14,23 @@ export default function DeviceByRoom(){
             return <li key={props.id}>Humidity: {props.value} {props.unit}</li>
         }
     }
-    //console.log('currDvs',currentDevices);
+    // console.log('currDvs',currentDevices);
     
     if(currentDevices.length>0 && roomNameList.length>0){
         return (
             <div className="devices">
             <h1>All Devices</h1>
                 {roomNameList.map((roomName, i) => (
-                    <ul key = {i.toString()} className='room'>
+                    <>
+                    <ul key = {i} className='room'>
                         <div className="room_name">{capitalizeFirstLetter(roomName)}</div>
-                        {currentDevices.map((device)=>(               
+                        {currentDevices?.map((device)=>(               
                             device.name == roomName && OneDevice(device)
                         ))}
                     </ul>
+                    <hr />
+                    </>
+                    
                 ))}
     
             </div>

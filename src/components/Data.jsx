@@ -25,10 +25,9 @@ const Data = (props) => {
   const [unitList, setUnitList] = useState([]);
   const [deviceList, setDeviceList] = useState([]);
   const [roomNameList, setRoomNameList] = useState([]);
-  // const [handShake, setHandShake] = React.useState({});
   const [sensorsData, setSensorData] = React.useState([]);
   const { instance, accounts } = useMsal();
-  const [currentDevices, setCurrentDevices] = useState({});
+  const [currentDevices, setCurrentDevices] = useState([]);
   const [alarmList, setAlarmList] = useState([]);
 
   const request = {
@@ -103,11 +102,12 @@ const Data = (props) => {
   }, [devices]);
 
   useEffect(() => {
-    if (currentDevices[0] != null && sensorsData[0] != null) {
+    if (currentDevices.length > 0 && sensorsData[0] != null) {
       getCurrentDevices(currentDevices, deviceList, sensorsData[0]);
       getAlarmList(currentDevices, setAlarmList);
+      console.log(currentDevices, "test");
     }
-  }, [sensorsData[0]]);
+  }, [currentDevices,sensorsData[0]]);
 
   return (
     <>
