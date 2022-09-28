@@ -16,7 +16,7 @@ export default function DeviceByRoom(){
     }
     //console.log('currDvs',currentDevices);
     
-    if(currentDevices && roomNameList){
+    if(currentDevices.length>0 && roomNameList.length>0){
         return (
             <div className="devices">
             <h1>All Devices</h1>

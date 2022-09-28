@@ -9,10 +9,10 @@ const negotiate = async (userEmail) => {
     .then((res) => {
       const url = res.data.url;
       const token = res.data.accessToken;
-      let a = sessionStorage.setItem("url", url);
-      let b = sessionStorage.setItem("token", token);
-      console.log(a, "url");
-      console.log(b, "token");
+      sessionStorage.setItem("url", url);
+      sessionStorage.setItem("token", token);
+      // console.log(a, "url");
+      // console.log(b, "token");
     })
     .catch((error) => {
       console.log(error);

@@ -24,7 +24,7 @@ const App = () => {
           <Router>
             <Routes>
               <Route path="/" element={<Alarm />} />
-              <Route path="allDevices" element={<DevicesByRoom />} />
+              <Route path="allDevices" element={<DevicesByRoom username={accounts[0]?.username}/>} />
             </Routes>
               <Menu />
           </Router>

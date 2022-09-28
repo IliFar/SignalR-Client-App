@@ -4,6 +4,7 @@ import { restoreAlarm } from "../../../api_calls/BuildingAndDevice";
 import totalAlarm from "./totalAlarm";
 import "./Alarm.css";
 import capitalizeFirstLetter from "../../services/capitalizeFirstLetter";
+import AllDevices from '../allDevices/DevicesByRoom'
 import { TiWarningOutline } from "react-icons/ti";
 import { MdOutlineGppGood } from "react-icons/md";
 
@@ -43,7 +44,7 @@ const Alarm = (props) => {
           </div>
           <button className="reset" onClick={handleClick}>
             Reset
-          </button>
+          </button>          
         </div>
       );
     }
@@ -55,6 +56,7 @@ const Alarm = (props) => {
     }
   };
   return (
+    <>
     <div className="alarm">
       {totalAlarm(alarmList)}
       {alarmList.length > 0 && <p className="alarm-list-p">Alarm list :</p>}
@@ -67,6 +69,9 @@ const Alarm = (props) => {
       )}
       <div className="alarms-container">{ShowAllAlarms(alarmList)}</div>
     </div>
+    <AllDevices />
+    </>
+    
   );
 };
 

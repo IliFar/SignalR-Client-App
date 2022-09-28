@@ -1,7 +1,7 @@
 .devices {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  /* justify-content: space-evenly; */
   align-items: center;
   padding: 20px;
   min-height: 600;
@@ -30,4 +30,7 @@
   padding: 5px;
   border-radius: 10px;
   margin-bottom: 5px;
+}
+.devices .hidden{
+  display: none;
 }/*# sourceMappingURL=Devices.css.map */
