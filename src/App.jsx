@@ -7,6 +7,7 @@ import { useIsAuthenticated, useMsal } from "@azure/msal-react";
 import Signin from "./components/Signin.jsx/Signin";
 import Header from "./components/header/Header";
 import DevicesByRoom from "./components/allDevices/DevicesByRoom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const App = () => {
   const isAuthenticated = useIsAuthenticated();
@@ -20,8 +21,12 @@ const App = () => {
         <>
           <Header name={accounts[0]?.name} />
           <Search />
-          <Alarm username={accounts[0]?.username} />
-          <DevicesByRoom />
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Alarm />} />
+              <Route path="/allDevices" element={<DevicesByRoom />} />
+            </Routes>
+          </BrowserRouter> 
           <Menu />
           
         </>
