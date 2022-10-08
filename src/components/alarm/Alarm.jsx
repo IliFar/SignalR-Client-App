@@ -4,15 +4,14 @@ import { restoreAlarm } from "../../../api_calls/BuildingAndDevice";
 import totalAlarm from "./totalAlarm";
 import "./Alarm.css";
 import capitalizeFirstLetter from "../../services/capitalizeFirstLetter";
-import AllDevices from '../allDevices/DevicesByRoom'
 import { TiWarningOutline } from "react-icons/ti";
-import { MdOutlineGppGood } from "react-icons/md";
 import DeviceByRoom from "../allDevices/DevicesByRoom";
+import { useMsal } from "@azure/msal-react";
 
-const Alarm = (props) => {
+const Alarm = () => {
   const { alarmList, setAlarmList } = useContext(AppContext);
-
-  const username = props.username;
+  const { accounts } = useMsal();
+  const username = accounts[0]?.username;
 
   const removeAlarm = (alarmList, alarm) => {
     const newArr = alarmList.filter((al) => {
@@ -61,13 +60,7 @@ const Alarm = (props) => {
     <div className="alarm">
       {totalAlarm(alarmList)}
       {alarmList.length > 0 && <p className="alarm-list-p">Alarm list :</p>}
-      <hr className="line" />
-      {alarmList.length == 0 && (
-        <div className="no-alarms">
-          <h1>No Alarms</h1>
-          <MdOutlineGppGood className="no-alarms-icon"/>
-        </div>
-      )}
+
       <div className="alarms-container">{ShowAllAlarms(alarmList)}</div>
       {!alarmList.length > 0 && <DeviceByRoom/>}
     </div>

@@ -1,4 +1,4 @@
-export default function getCurrentDevices(currentDevices, deviceList, sensor){
+export default function updateCurrentDevices(currentDevices, deviceList, sensor){
     let index = deviceList.indexOf((sensor.deviceId).toLowerCase());
     let curr = currentDevices[index]
     let min = curr.minValue;

@@ -1,27 +1,26 @@
-import { useIsAuthenticated, useMsal } from "@azure/msal-react";
+import { useMsal } from "@azure/msal-react";
 import React, { createContext } from "react";
 import {
   getAllDevices,
   getBuildingInfo,
   getUnit,
 } from "../../api_calls/BuildingAndDevice";
-import connectSignalR from "../../api_calls/Connect";
-import negotiate from "../../api_calls/Negotiate";
 import { loginRequest } from "../../authentication/authConfig";
 import initDevices from "../services/initDevices";
 import React, { useState, useEffect } from "react";
 import getExtraArr from "../services/getExtraArr";
-import getCurrentDevices from "../services/getCurrentDevices";
+import updateCurrentDevices from "../services/updateCurrentDevices";
 import getRoomNames from "../services/getRoomNames";
 import getAlarmList from "../services/getAlarmList";
+import axios from "axios";
 
 export const AppContext = createContext({});
 
-const Data = (props) => {
+export default function Data(props){
   const [accessToken, setAccessToken] = React.useState(null);
   const [devices, setDevices] = React.useState([]);
   const [bldInfo, setBldInfo] = React.useState({});
-  const [units, setUnits] = React.useState({});
+  const [units, setUnits] = React.useState([]);
   const [unitList, setUnitList] = useState([]);
   const [deviceList, setDeviceList] = useState([]);
   const [roomNameList, setRoomNameList] = useState([]);
@@ -47,7 +46,7 @@ const Data = (props) => {
     });
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (request.account) {
       instance
         .acquireTokenSilent(request)
@@ -59,34 +58,46 @@ const Data = (props) => {
             setAccessToken(response.accessToken);
           });
         });
-    }
-    
-    if (useIsAuthenticated) {
-      if (accessToken != null) {
-        getBuildingInfo(accessToken, setBldInfo).then(
-          getUnit(accessToken, setUnits)
-        );
-        console.log('units', units)
-      }
-      
-      if (units.length>0) {
-        getExtraArr(units, setUnitList);
-      }
-      
-      if (accessToken != null && bldInfo.id != null) {
-        getAllDevices(accessToken, bldInfo.id, setDevices);
-      }
-      if (accounts[0] != null) {
-        negotiate(accounts[0].username);
       }
 
-      if (accounts[0] != null) {
-        const url = sessionStorage.getItem("url");
-        const token = sessionStorage.getItem("token");
-        connectSignalR(setSensorData, url, token);
-      }
+    if (accessToken != null) {
+      getBuildingInfo(accessToken, setBldInfo)
+      .then(getUnit(accessToken, setUnits)
+      );
+
+      axios({
+        method: "get",
+        url: "https://smarthut.azurewebsites.net/api/negotiate",
+        headers: { "X-MS-SIGNALR-USERID": `${accounts[0].username}` },
+      })
+        .then((res) => {
+          url = res.data.url;
+          const token = res.data.accessToken;
+          const signalR = require("@microsoft/signalr");
+          let connection = new signalR.HubConnectionBuilder()
+          .withUrl(`${url}`, { accessTokenFactory: () => token })
+          .build();
+
+          connection.start();
+
+          connection.on("newTelemetry", (data) => {
+            setSensorData(data);
+            console.log('signalR',data)
+          });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
-  }, [accessToken, instance, bldInfo.id], units);
+    
+    if (units.length>0) {
+      getExtraArr(units, setUnitList);
+    }
+    
+    if (accessToken != null && bldInfo.id != null) {
+      getAllDevices(accessToken, bldInfo.id, setDevices);
+    }
+  }, [accessToken, accounts[0], bldInfo.id]);
 
   useEffect(() => {
     if (unitList.length != 0) {
@@ -103,10 +114,10 @@ const Data = (props) => {
 
   useEffect(() => {
     if (currentDevices.length > 0 && sensorsData[0] != null) {
-      getCurrentDevices(currentDevices, deviceList, sensorsData[0]);
+      updateCurrentDevices(currentDevices, deviceList, sensorsData[0]);
       getAlarmList(currentDevices, setAlarmList);
     }
-  }, [currentDevices,sensorsData[0]]);
+  }, [sensorsData[0]]);
 
   return (
     <>
@@ -117,7 +128,7 @@ const Data = (props) => {
           currentDevices,
           roomNameList,
           alarmList,
-          setAlarmList,
+          setAlarmList
         }}
       >
         {props.children}
@@ -126,4 +137,3 @@ const Data = (props) => {
   );
 };
 
-export default Data;

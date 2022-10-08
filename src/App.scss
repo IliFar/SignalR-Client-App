@@ -2,3 +2,11 @@
 .hidden {
     display: none !important;
 }
+
+html {
+    max-width: 150ch;
+    padding: 2em 1em;
+    margin: auto;
+    line-height: 1.75;
+    font-size: 1.25em;
+}

@@ -11,8 +11,6 @@ const negotiate = async (userEmail) => {
       const token = res.data.accessToken;
       sessionStorage.setItem("url", url);
       sessionStorage.setItem("token", token);
-      // console.log(a, "url");
-      // console.log(b, "token");
     })
     .catch((error) => {
       console.log(error);

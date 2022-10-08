@@ -4,7 +4,8 @@
   align-items: center;
   position: fixed;
   bottom: 0;
-  width: 100%;
+  max-width: 150ch;
+  width: 95%;
   max-height: 50px;
   padding: 5;
   background: rgb(34, 121, 195);
@@ -30,12 +31,12 @@
 }
 .menu .menu-icons .home-icon span {
   position: absolute;
-  top: -7px;
+  top: -15px;
   right: -7px;
   background: red;
   border-radius: 50%;
-  width: 25px;
-  height: 25px;
+  width: 30px;
+  height: 30px;
   color: white;
   font-size: 20px;
   text-align: center;

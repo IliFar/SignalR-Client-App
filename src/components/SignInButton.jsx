@@ -9,7 +9,7 @@ const SignInButton = () => {
   
   return (
     <div className="button" onClick={() => handleLogin()}>
-      <button>Sign In</button>
+      <span>Sign In</span>
     </div>
   );
 };

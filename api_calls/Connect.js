@@ -1,8 +1,6 @@
-import { emit } from "process";
-
 const signalR = require("@microsoft/signalr");
 
-const connectSignalR = async (setSensorData, url, token, restoreAlarm) => {
+const connectSignalR = async (setSensorData, url, token) => {
   let connection = new signalR.HubConnectionBuilder()
     .withUrl(`${url}`, { accessTokenFactory: () => token })
     .build();
@@ -11,6 +9,7 @@ const connectSignalR = async (setSensorData, url, token, restoreAlarm) => {
 
   connection.on("newTelemetry", (data) => {
     setSensorData(data);
+    console.log('signalR', data)
   });
 
 }

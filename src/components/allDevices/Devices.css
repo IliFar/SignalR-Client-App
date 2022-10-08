@@ -9,13 +9,7 @@
 .devices h1 {
   margin-bottom: 10px;
 }
-.devices hr {
-  background-color: black;
-  height: 5px;
-  width: 100%;
-  margin-bottom: 10px;
-  border-radius: 10px;
-}
+
 .devices .room {
   background-color: rgba(34, 122, 108, 0.74);
   display: flex;
@@ -40,4 +34,34 @@
   padding: 5px;
   border-radius: 10px;
   margin-bottom: 5px;
-}/*# sourceMappingURL=Devices.css.map */
+}
+.devices .loader {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: block;
+  margin:15px auto;
+  position: relative;
+  background: #FFF;
+  box-shadow: -24px 0 #FFF, 24px 0 #FFF;
+  box-sizing: border-box;
+  animation: shadowPulse 4s linear infinite;
+  transition: all 1s;
+}
+
+@keyframes shadowPulse {
+  33% {
+    background: #FFF;
+    box-shadow: -24px 0 #c586a4, 24px 0 #FFF;
+  }
+  66% {
+    background: #868dc5;
+    box-shadow: -24px 0 #FFF, 24px 0 #FFF;
+  }
+  100% {
+    background: #FFF;
+    box-shadow: -24px 0 #FFF, 24px 0 #246655;
+  }
+}
+
+/*# sourceMappingURL=Devices.css.map */
