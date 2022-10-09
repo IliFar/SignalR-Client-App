@@ -30,6 +30,7 @@ export default function DeviceByRoom(){
                     </>
                     
                 ))}
+                {/* <span class="loader"></span> */}
             </div>
         )
     }else{

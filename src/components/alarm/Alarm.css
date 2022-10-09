@@ -84,8 +84,9 @@
 }
 .alarm .no-alarms {
   height: 20px;
+  width: 100%;
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   justify-content: center;
   align-items: center;
   background: linear-gradient(270deg, #246655, #86c5b4, #868dc5, #c586a4);
@@ -93,12 +94,6 @@
   padding: 20px;
   border-radius: 10px;
   color: white;
-  -webkit-animation: flow-gradient 4s ease infinite;
-          animation: flow-gradient 4s ease infinite;
-}
-.alarm .no-alarms .no-alarms-icon {
-  font-size: 30px;
-  color: rgb(255, 255, 255);
 }
 
 @-webkit-keyframes zoom-out {
@@ -124,28 +119,7 @@
     transform: scale(0.5, 0.5);
   }
 }
-@-webkit-keyframes flow-gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-@keyframes flow-gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
+
 @media screen and (min-width: 768px) and (max-width: 1023px) {
   .alarm .alarms-container {
     display: flex;
